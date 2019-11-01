@@ -9,7 +9,12 @@ import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import Game.Enemy.BaseEnemy;
+import Game.Object.GameObject;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
-public class Gamestage {
+abstract public class Gamestage {
 
 }

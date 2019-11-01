@@ -1,4 +1,7 @@
 package Game.Enemy;
 
-public class NomarlEnemy {
+import javafx.scene.image.Image;
+
+public class NomarlEnemy extends BaseEnemy {
+
 }
