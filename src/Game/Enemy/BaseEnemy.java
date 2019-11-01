@@ -16,8 +16,8 @@ public class BaseEnemy extends GameObject implements UpdatableObject {
     public BaseEnemy (){
         super();
         setImage( new Image("file:Source/Enemy/Soliders/towerDefense_tile245.png"));
-        setPosX(2.5*64);
-        setPosY(2.5*64);
+        setPosX(7.5*64);
+        setPosY(0);
         X = getPosX();
         Y = getPosY();
         lastAniTime = lastMoveTime = System.currentTimeMillis();
