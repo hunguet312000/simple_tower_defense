@@ -136,6 +136,10 @@ public class Level1 extends GameStage {
         rect_button.setMaxWidth(3*64);
 
 
+        Text score = new Text();
+        setText(score, 12*64 + 5, 10*64, "Score :");
+        Text lives = new Text();
+        setText(lives, 12*64 + 5, 11*64, "Lives :");
 
 
 
@@ -144,13 +148,13 @@ public class Level1 extends GameStage {
             public void handle(MouseEvent mouseEvent) {
                 root.getChildren().clear();
                 Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince1");
+                setText(prince, 12.05 * 64, 4.5 * 64, "Prince1 :");
                 Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame1");
+                setText(dame, 12.05 * 64, 5.5 * 64, "Dame1 :");
                 Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range1");
+                setText(range, 12.05 * 64, 6.5 * 64, "Range1 :");
                 root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range);
+                root.getChildren().addAll(prince, dame, range, score, lives);
             }
         });
 
@@ -160,13 +164,13 @@ public class Level1 extends GameStage {
             public void handle(MouseEvent mouseEvent) {
                 root.getChildren().clear();
                 Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince2");
+                setText(prince, 12.05 * 64, 4.5 * 64, "Prince2 :");
                 Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame2");
+                setText(dame, 12.05 * 64, 5.5 * 64, "Dame2 :");
                 Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range2");
+                setText(range, 12.05 * 64, 6.5 * 64, "Range2 :");
                 root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range);
+                root.getChildren().addAll(prince, dame, range, score, lives);
 
             }
         });
@@ -176,13 +180,13 @@ public class Level1 extends GameStage {
             public void handle(MouseEvent mouseEvent) {
                 root.getChildren().clear();
                 Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince3");
+                setText(prince, 12.05 * 64, 4.5 * 64, "Prince3 :");
                 Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame3");
+                setText(dame, 12.05 * 64, 5.5 * 64, "Dame3 :");
                 Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range3");
+                setText(range, 12.05 * 64, 6.5 * 64, "Range3 :");
                 root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range);
+                root.getChildren().addAll(prince, dame, range, score, lives);
             }
         });
 
@@ -191,13 +195,13 @@ public class Level1 extends GameStage {
             public void handle(MouseEvent mouseEvent) {
                 root.getChildren().clear();
                 Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince4");
+                setText(prince, 12.05 * 64, 4.5 * 64, "Prince4 :");
                 Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame4");
+                setText(dame, 12.05 * 64, 5.5 * 64, "Dame4 :");
                 Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range4");
+                setText(range, 12.05 * 64, 6.5 * 64, "Range4 :");
                 root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range);
+                root.getChildren().addAll(prince, dame, range, score, lives);
             }
         });
 
@@ -206,13 +210,13 @@ public class Level1 extends GameStage {
             public void handle(MouseEvent mouseEvent) {
                 root.getChildren().clear();
                 Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince5");
+                setText(prince, 12.05 * 64, 4.5 * 64, "Prince5 :");
                 Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame5");
+                setText(dame, 12.05 * 64, 5.5 * 64, "Dame5 :");
                 Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range5");
+                setText(range, 12.05 * 64, 6.5 * 64, "Range5 :");
                 root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range);
+                root.getChildren().addAll(prince, dame, range, score, lives);
             }
         });
 
@@ -221,20 +225,21 @@ public class Level1 extends GameStage {
             public void handle(MouseEvent mouseEvent) {
                 root.getChildren().clear();
                 Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince6");
+                setText(prince, 12.05 * 64, 4.5 * 64, "Prince6 :");
                 Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame6");
+                setText(dame, 12.05 * 64, 5.5 * 64, "Dame6 :");
                 Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range6");
+                setText(range, 12.05 * 64, 6.5 * 64, "Range6 :");
                 root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range);
+                root.getChildren().addAll(prince, dame, range, score, lives);
             }
         });
+        
 
 
 
 
-        root.getChildren().addAll(next_level_button, update_button, sell_button);
+        root.getChildren().addAll(next_level_button, update_button, sell_button, score, lives);
         root.getChildren().addAll(tower1, tower2, tower3, tower4, tower5, tower6);
 
         Scene scene = new Scene(root);
@@ -253,6 +258,8 @@ public class Level1 extends GameStage {
             }
         };
         timer.start();
+
+
         primaryStage.show();
     }
 
