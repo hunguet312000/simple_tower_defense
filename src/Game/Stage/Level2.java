@@ -1,10 +1,15 @@
 package Game.Stage;
 
 import Game.Enemy.NomarlEnemy;
+import javafx.application.Application;
+import javafx.scene.Group;
+import javafx.scene.Scene;
+import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.stage.Stage;
 
-public class Level2  {
+public class Level2 extends Application {
     public static final String[][] MAP_TILES2 = new String[][]{
             { "024" , "024" , "024" , "024" , "163" , "161" , "024" , "024" , "024" , "024" , "024" , "024" },
             { "024" , "024" , "024" , "024" , "163" , "184" , "185" , "185" , "185" , "185" , "142" , "024" },
@@ -20,6 +25,21 @@ public class Level2  {
     };
 
     public Level2(){
+    }
+
+    @Override
+    public void start(Stage primaryStage) throws Exception {
+        primaryStage.setTitle("Game");
+        Group root = new Group();
+        Canvas canvas = new Canvas(64*15, 64*11);
+        root.getChildren().addAll(canvas);
+        GraphicsContext gc = canvas.getGraphicsContext2D();
+        draw(gc, MAP_TILES2);
+
+
+        Scene scene = new Scene(root);
+        primaryStage.setScene(scene);
+        primaryStage.show();
     }
 
     public void draw (GraphicsContext gc, String[][] map){

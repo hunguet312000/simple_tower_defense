@@ -12,12 +12,12 @@ import javafx.stage.Stage;
 import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 
-public class GameStage extends Application {
+public class GameStage extends Application  {
     public static void main(String[] args) {
         launch(args);
     }
 
-    private void setButton(Button button, double posX, double posY, String text){
+        public void setButton(Button button, double posX, double posY, String text){
         button.setLayoutX(posX);
         button.setLayoutY(posY);
         button.setMinHeight(45);
@@ -101,9 +101,22 @@ public class GameStage extends Application {
         level2.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                Level1 level_1 = new Level1();
+                Level2 level_2 = new Level2();
                 try {
-                    level_1.start(new Stage());
+                    level_2.start(new Stage());
+                    primaryStage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        level3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Level3 level_3 = new Level3();
+                try {
+                    level_3.start(new Stage());
                     primaryStage.close();
                 } catch (Exception e) {
                     e.printStackTrace();
