@@ -15,11 +15,9 @@ public class Tank extends BaseEnemy {
     protected int waypoint = 0;
     protected Direction direction;
 
-    public Tank (){
-        i = 7;
-        j = 0;
-        pos_x = i * 64 + 32;
-        pos_y = j * 64;
+    public Tank ( int pos_x , int pos_y){
+        this.pos_x = pos_x;
+        this.pos_y = pos_y;
         speed = 2;
         health = 100;
         direction = Direction.UP;

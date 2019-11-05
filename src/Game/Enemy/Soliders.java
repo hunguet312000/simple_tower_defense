@@ -17,17 +17,14 @@ public class Soliders extends BaseEnemy {
         this.pos_x = pos_x;
         this.pos_y = pos_y;
         int x = k;
-        speed = 1;
+        speed = 1.25;
         health = 100;
         direction = Direction.UP;
         for ( x = 245 ; x <= 248 ; x++) image = new Image("file:Source/Enemy/Soliders/towerDefense_tile" + k +".png");
     }
 
     public final Point[] wayPoint1 = new Point[]{
-            new Point( 7*64 + 32 , -32*4),
-            new Point( 7*64 + 32 , -32*3),
-            new Point( 7*64 + 32 , -32*2),
-            new Point( 7*64 + 32 , -32),
+            new Point( 7*64 + 32 , -256),
             new Point(7*64 + 32 , 0*64),
             new Point (7*64 + 32, 3*64 + 32),
             new Point(2*64 + 32 , 3*64 + 32),

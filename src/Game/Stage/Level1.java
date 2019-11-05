@@ -27,12 +27,8 @@ import java.util.List;
 
 public class Level1 extends GameStage {
 
-    Tank tank = new Tank();
-    Soliders sl1 = new Soliders(245, 7*64 + 32 , -32);
-    Soliders sl2 = new Soliders(246 , 7*64 + 32 , -32*2);
-    Soliders sl3 = new Soliders(247 , 7*64 + 32 , -32*3);
-    Soliders sl4 = new Soliders(248 , 7*64 + 32 , -32*4);
-    Plane pl = new Plane();
+     PlayLevel1 playLevel1 = new PlayLevel1(1);
+
 
     public static final String[][] MAP_TILES1 = new String[][]{
             { "024" , "024" , "024" , "024" , "024" , "024" , "024" , "025" , "023" , "024" , "024" , "024"},
@@ -55,12 +51,9 @@ public class Level1 extends GameStage {
                 gc.drawImage(new Image("file:Source/Landcape/towerDefense_tile"+ map[i][j] + ".png"), j * 64, i * 64);
             }
         }
-        tank.draw(gc);
-        sl1.draw(gc);
-        sl2.draw(gc);
-        sl3.draw(gc);
-        sl4.draw(gc);
-        pl.draw(gc);
+
+        playLevel1.draw(gc);
+
     }
 
     public static void main(String[] args) {
@@ -243,12 +236,7 @@ public class Level1 extends GameStage {
         AnimationTimer timer = new AnimationTimer() {
             @Override
             public void handle(long l) {
-                tank.update();
-                sl1.update();
-                sl2.update();
-                sl3.update();
-                sl4.update();
-                pl.update();
+                playLevel1.update();
                 draw(gc);
             }
         };

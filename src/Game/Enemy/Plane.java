@@ -15,9 +15,9 @@ public class Plane extends BaseEnemy {
     protected int waypoint = 0;
     protected Direction direction;
 
-    public Plane (){
-        pos_x = 7 * 64 + 32;
-        pos_y = -128;
+    public Plane ( int pos_x , int pos_y){
+       this.pos_x = pos_x;
+       this.pos_y = pos_y;
         speed = 2;
         health = 100;
         direction = Direction.UP;
