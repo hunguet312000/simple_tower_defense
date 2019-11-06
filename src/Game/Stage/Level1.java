@@ -1,11 +1,7 @@
 package Game.Stage;
 
-import Game.Enemy.Plane;
-import Game.Enemy.Soliders;
-import Game.Enemy.Tank;
-import Game.Object.GameObject;
+import Game.CreatLevel.CreatLV1;
 import javafx.animation.AnimationTimer;
-import javafx.application.Application;
 import javafx.event.EventHandler;
 import javafx.scene.Group;
 import javafx.scene.Scene;
@@ -15,19 +11,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import Game.Enemy.BaseEnemy;
 import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
 
-import java.awt.*;
-import java.util.ArrayList;
-import java.util.List;
-
 public class Level1 extends GameStage {
 
-     PlayLevel1 playLevel1 = new PlayLevel1(1);
+     CreatLV1 playLevel1 = new CreatLV1();
 
 
     public static final String[][] MAP_TILES1 = new String[][]{
@@ -227,35 +218,33 @@ public class Level1 extends GameStage {
                 root.getChildren().addAll(prince, dame, range, score, lives);
             }
         });
-        
 
-
-
+        next_level_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                try{
+                    AnimationTimer timer = new AnimationTimer() {
+                        @Override
+                        public void handle(long l) {
+                            playLevel1.update();
+                            draw(gc);
+                        }
+                    };
+                    timer.start();
+                    playLevel1.spawnTroop();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         root.getChildren().addAll(next_level_button, update_button, sell_button, score, lives);
         root.getChildren().addAll(tower1, tower2, tower3, tower4, tower5, tower6);
 
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
-
-        AnimationTimer timer = new AnimationTimer() {
-            @Override
-            public void handle(long l) {
-                playLevel1.update();
-                draw(gc);
-            }
-        };
-        timer.start();
-
-
         primaryStage.show();
     }
-
-
-
-
-
-
 
     @Override
     public void setButton(Button button, double posX, double posY, String text) {

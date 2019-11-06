@@ -1,43 +1,27 @@
-package Game.Enemy;
+package Game.EnemyLV1;
 
-import javafx.scene.SnapshotParameters;
-import javafx.scene.canvas.GraphicsContext;
+import Game.Object.GameObject;
+import Game.Object.UpdatableObject;
 import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
-import javafx.scene.paint.Color;
 
 import java.awt.*;
 
-public class Plane2 extends BaseEnemy {
-    protected Image im;
+public class BaseEnemyLV1 extends GameObject implements UpdatableObject {
+    protected Image image;
+    protected int i , j , pos_x , pos_y;
+    protected double speed;
+    protected double dam , health;
     protected int waypoint = 0;
     protected Direction direction;
 
-    public Plane2 (){
-        pos_x = 10 * 64 + 32;
-        pos_y = -128;
-        speed = 2;
-        health = 100;
-        direction = Direction.UP;
-        image = new Image("file:Source/Enemy/Weapons/towerDefense_tile271.png");
-        im = new Image("file:Source/Enemy/Weapons/towerDefense_tile294.png");
-    }
-
     public final Point[] wayPoint1 = new Point[]{
-            new Point( 10*64 + 32 , -128),
-            new Point(10 * 64 + 32, 0* 64 ),
-            new Point(10*64 + 32 , 1*64 + 32),
-            new Point(8 * 64 + 32, 1 * 64 + 32),
-            new Point(8 * 64 + 32, 3 * 64 + 32),
-            new Point(5 * 64 + 32, 3 * 64 + 32),
-            new Point(5 * 64 + 32, 0 * 64 + 32),
-            new Point(1 * 64 + 32, 0 * 64 + 32),
-            new Point(1 * 64 + 32, 5 * 64 + 32),
-            new Point(3 * 64 + 32, 5 * 64 + 32),
-            new Point(3 * 64 + 32, 6 * 64 + 32),
-            new Point(10* 64 + 32, 6 * 64 + 32),
-            new Point(10* 64 + 32, 9 * 64 + 32),
-            new Point(-64, 9 * 64 + 32),
+            new Point(7*64 + 32 , -64),
+            new Point(7*64 + 32 , 0*64),
+            new Point (7*64 + 32, 3*64 + 32),
+            new Point(2*64 + 32 , 3*64 + 32),
+            new Point( 2*64 + 32 ,7*64 + 32),
+            new Point(5*64 + 32 , 7*64 + 32),
+            new Point( 5*64 + 32 , 12*64),
     };
 
 
@@ -51,18 +35,6 @@ public class Plane2 extends BaseEnemy {
         return null;
     }
 
-    public void draw (GraphicsContext gc){
-        SnapshotParameters params = new SnapshotParameters();
-        params.setFill(Color.TRANSPARENT);
-        ImageView iv = new ImageView(im);
-        iv.setRotate(this.direction.getDegree());
-        Image base = iv.snapshot(params, null);
-        ImageView iv2 = new ImageView(image);
-        iv2.setRotate(this.direction.getDegree());
-        Image base2 = iv2.snapshot(params, null);
-        gc.drawImage(base, pos_x, pos_y);
-        gc.drawImage(base2, pos_x, pos_y);
-    }
 
     void calculateDirection() {
         // Tinh huong di tiep theo cho Object
