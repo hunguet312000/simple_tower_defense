@@ -99,6 +99,32 @@ public class GameStage extends Application  {
 
         // change level 2 stage
 
+        level2.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Level2 level_2= new Level2();
+                try {
+                    level_2.start(new Stage());
+                    primaryStage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        level3.setOnMouseClicked(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                Level3 level_3= new Level3();
+                try {
+                    level_3.start(new Stage());
+                    primaryStage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
