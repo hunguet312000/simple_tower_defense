@@ -6,21 +6,15 @@ import javafx.scene.image.Image;
 
 public class GameObject {
 
-    protected double PosX, PosY;
-    private Image image;
+    protected int pos_x, pos_y;
+    protected Image image;
 
-    public GameObject() {
-        this.PosX = PosX;
-        this.PosY = PosY;
-        this.image = image;
+    public int getPos_x() {
+        return pos_x;
     }
 
-    public double getPosX() {
-        return PosX;
-    }
-
-    public double getPosY() {
-        return PosY;
+    public int getPos_y() {
+        return pos_y;
     }
 
     public Image getImage() {
@@ -28,12 +22,12 @@ public class GameObject {
     }
 
 
-    public void setPosX(double PosX) {
-        this.PosX = PosX;
+    public void setPos_x(int pos_x) {
+        this.pos_x = pos_x;
     }
 
-    public void setPosY(double PosY) {
-        this.PosY = PosY;
+    public void setPos_y(int pos_y) {
+        this.pos_y = pos_y;
     }
 
     public void setImage(Image image) {

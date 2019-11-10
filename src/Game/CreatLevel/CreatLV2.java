@@ -29,21 +29,21 @@ public class CreatLV2 {
         for ( int i = 0 ; i < tanks.size() ; i++ )
         {
             tanks.get(i).update();
-            if ( tanks.get(i).getPosY() > 11*64 ) {
+            if ( tanks.get(i).getPos_y() > 11*64 ) {
                 tanks.remove(i);
             }
         }
         for ( int i = 0 ; i < solidersLV2s.size() ; i++ )
         {
             solidersLV2s.get(i).update();
-            if ( solidersLV2s.get(i).getPosY() > 11*64 ) {
+            if ( solidersLV2s.get(i).getPos_y() > 11*64 ) {
                 solidersLV2s.remove(i);
             }
         }
         for ( int i = 0 ; i < planeLV2s.size() ; i++ )
         {
             planeLV2s.get(i).update();
-            if ( planeLV2s.get(i).getPosY() > 11*64 ) {
+            if ( planeLV2s.get(i).getPos_y() > 11*64 ) {
                 planeLV2s.remove(i);
             }
         }

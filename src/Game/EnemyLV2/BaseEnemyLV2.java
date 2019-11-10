@@ -1,18 +1,13 @@
 package Game.EnemyLV2;
 
+import Game.Object.EnemyObject;
 import Game.Object.GameObject;
 import Game.Object.UpdatableObject;
 import javafx.scene.image.Image;
 
 import java.awt.*;
 
-public class BaseEnemyLV2 extends GameObject implements UpdatableObject {
-    protected Image image;
-    protected int pos_x , pos_y;
-    protected double speed;
-    protected double dam , health;
-    protected int waypoint = 0;
-    protected Direction direction;
+public class BaseEnemyLV2 extends EnemyObject implements UpdatableObject {
 
     public final Point[] wayPoint2 = new Point[]{
             new Point( 4*64 + 32 , -128),

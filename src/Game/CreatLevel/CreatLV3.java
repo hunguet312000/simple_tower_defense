@@ -32,21 +32,21 @@ public class CreatLV3 {
         for ( int i = 0 ; i < tanks.size() ; i++ )
         {
             tanks.get(i).update();
-            if ( tanks.get(i).getPosY() > 11*64 ) {
+            if ( tanks.get(i).getPos_y() > 11*64 ) {
                 tanks.remove(i);
             }
         }
         for ( int i = 0 ; i < solidersLV3s.size() ; i++ )
         {
             solidersLV3s.get(i).update();
-            if ( solidersLV3s.get(i).getPosY() > 11*64 ) {
+            if ( solidersLV3s.get(i).getPos_y() > 11*64 ) {
                 solidersLV3s.remove(i);
             }
         }
         for ( int i = 0 ; i < planeLV3s.size() ; i++ )
         {
             planeLV3s.get(i).update();
-            if ( planeLV3s.get(i).getPosY() > 11*64 ) {
+            if ( planeLV3s.get(i).getPos_y() > 11*64 ) {
                 planeLV3s.remove(i);
             }
         }

@@ -1,18 +1,13 @@
 package Game.EnemyLV1;
 
+import Game.Object.EnemyObject;
 import Game.Object.GameObject;
 import Game.Object.UpdatableObject;
 import javafx.scene.image.Image;
 
 import java.awt.*;
 
-public class BaseEnemyLV1 extends GameObject implements UpdatableObject {
-    protected Image image;
-    protected int i , j , pos_x , pos_y;
-    protected double speed;
-    protected double dam , health;
-    protected int waypoint = 0;
-    protected Direction direction;
+public class BaseEnemyLV1 extends EnemyObject implements UpdatableObject {
 
     public final Point[] wayPoint1 = new Point[]{
             new Point(7*64 + 32 , -64),
@@ -23,7 +18,6 @@ public class BaseEnemyLV1 extends GameObject implements UpdatableObject {
             new Point(5*64 + 32 , 7*64 + 32),
             new Point( 5*64 + 32 , 12*64),
     };
-
 
     public double distance(int x1, int y1, int x2, int y2) {
         return Math.sqrt(Math.pow(x1 - x2, 2) + Math.pow(y1 - y2, 2));
