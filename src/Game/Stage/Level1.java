@@ -3,6 +3,7 @@ package Game.Stage;
 import Game.CreatLevel.CreatLV1;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
+import javafx.scene.Cursor;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
@@ -18,7 +19,7 @@ import javafx.scene.paint.Color;
 
 public class Level1 extends GameStage {
 
-     CreatLV1 playLevel1 = new CreatLV1();
+    CreatLV1 playLevel1 = new CreatLV1();
 
 
     public static final String[][] MAP_TILES1 = new String[][]{
@@ -33,6 +34,18 @@ public class Level1 extends GameStage {
             { "024" , "024" , "026" , "001" , "001" , "002" , "023" , "024" , "024" , "024" , "024" , "024"},
             { "024" , "024" , "024" , "024" , "024" , "025" , "023" , "024" , "024" , "024" , "024" , "024"},
             { "024" , "024" , "024" , "024" , "024" , "025" , "023" , "024" , "024" , "024" , "024" , "024"}
+    };
+    public static final double[] POS_X_TOWER = new double[]{ 12.1*64 + 15, 12.1*64 + 15, 12.1*64 + 15, 14*64, 14*64, 14*64};
+    public static final double[] POS_Y_TOWER = new double[]{ 0, 1*64 + 15, 2*64 + 40, 0, 1*64 + 25, 2*64 + 40};
+    public static final double[] POS_Y_BEHIND = new double[]{ 0, 1*64 + 15, 2*64 + 30, 0, 1*64 + 15, 2*64 + 30};
+
+    public static final String[] TOWER_FILE = new String[]{
+            "file:Source/Towers/towerDefense_tile250.png",
+            "file:Source/Towers/towerDefense_tile249.png",
+            "file:Source/Towers/towerDefense_tile205.png",
+            "file:Source/Towers/towerDefense_tile204.png",
+            "file:Source/Towers/towerDefense_tile206.png",
+            "file:Source/Towers/towerDefense_tile226.png",
     };
 
     public void draw (GraphicsContext gc){
@@ -53,63 +66,35 @@ public class Level1 extends GameStage {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
+        TowerControl towerControl = new TowerControl();
+
         primaryStage.setTitle("Game");
         Group root = new Group();
-        Canvas canvas = new Canvas(64*15, 64*11);
+        Canvas canvas = new Canvas(64*15 + 15, 64*11);
         root.getChildren().addAll(canvas);
+        Scene scene = new Scene(root);
+        scene.setFill(Color.rgb(192, 192, 192));
         GraphicsContext gc = canvas.getGraphicsContext2D();
         draw(gc);
+
         Button next_level_button = new Button();
-        setButton(next_level_button, 12.8*64, 3.5*64, "Next Level");
+        setButton(next_level_button, 12.8*64, 3.5*64 + 25, "Next Level");
+
         Button update_button = new Button();
         setButton(update_button, 12.05*64, 9*64, "Update");
+
         Button sell_button = new Button();
         setButton(sell_button, 13.55*64, 9*64, "Sell");
 
+        ImageView[] tower = new ImageView[6];
+        ImageView[] behind = new ImageView[6];
 
-
-
-        Button tower1 = new Button();
-        Image tower1_image = new Image("file:Source/Menu/MainIcon.png", 45, 45, false, false);
-        ImageView iv = new ImageView(tower1_image);
-        tower1.setGraphic(iv);
-        tower1.setLayoutX(12.1*64 + 15);
-        tower1.setLayoutY(0);
-
-        Button tower2 = new Button();
-        Image tower2_image = new Image("file:Source/Menu/MainIcon.png", 45, 45, false, false);
-        ImageView iv2 = new ImageView(tower2_image);
-        tower2.setGraphic(iv2);
-        tower2.setLayoutX(12.1*64 + 15);
-        tower2.setLayoutY(1*64);
-
-        Button tower3 = new Button();
-        Image tower3_image = new Image("file:Source/Menu/MainIcon.png", 45, 45, false, false);
-        ImageView iv3 = new ImageView(tower3_image);
-        tower3.setGraphic(iv3);
-        tower3.setLayoutX(12.1*64 + 15);
-        tower3.setLayoutY(2*64);
-
-        Button tower4 = new Button();
-        Image tower4_image = new Image("file:Source/Menu/MainIcon.png", 45, 45, false, false);
-        ImageView iv4 = new ImageView(tower4_image);
-        tower4.setGraphic(iv4);
-        tower4.setLayoutX(14*64 - 15);
-        tower4.setLayoutY(0);
-
-        Button tower5 = new Button();
-        Image tower5_image = new Image("file:Source/Menu/MainIcon.png", 45, 45, false, false);
-        ImageView iv5 = new ImageView(tower5_image);
-        tower5.setGraphic(iv5);
-        tower5.setLayoutX(14*64 - 15);
-        tower5.setLayoutY(1*64);
-
-        Button tower6 = new Button();
-        Image tower6_image = new Image("file:Source/Menu/MainIcon.png", 45, 45, false, false);
-        ImageView iv6 = new ImageView(tower6_image);
-        tower6.setGraphic(iv6);
-        tower6.setLayoutX(14*64 - 15);
-        tower6.setLayoutY(2*64);
+        for(int i = 0; i < 6; i++){
+            tower[i] = new ImageView();
+            behind[i] = new ImageView();
+            setImageButton(behind[i], POS_X_TOWER[i], POS_Y_BEHIND[i] + 12, "file:Source/Towers/towerDefense_tile180.png");
+            setImageButton(tower[i], POS_X_TOWER[i], POS_Y_TOWER[i], TOWER_FILE[i]);
+        }
 
         Button rect_button = new Button();
         rect_button.setLayoutX(12*64);
@@ -119,105 +104,34 @@ public class Level1 extends GameStage {
         rect_button.setMinWidth(3*64);
         rect_button.setMaxWidth(3*64);
 
+        Text dame = new Text();
+        setText(dame, 12.05 * 64, 4.5 * 64 + 85);
+        Text range = new Text();
+        setText(range, 12.05 * 64, 5.5 * 64 + 85);
+        Text level = new Text();
+        setText(level, 12.05 * 64, 6.5 * 64 + 85);
 
-        Text score = new Text();
-        setText(score, 12*64 + 5, 10*64, "Score :");
-        Text lives = new Text();
-        setText(lives, 12*64 + 5, 11*64, "Lives :");
+        for(int i = 0; i < 6; i++){
+            double x = tower[i].getX();
+            double y = tower[i].getY();
+            String num = String.valueOf(i + 1);
+            String file = TOWER_FILE[i];
+            tower[i].setOnMouseMoved(new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    ImageView iv = new ImageView();
+                    setImageButton(iv, x, y, file);
 
+                    buttonClick(iv, root, dame, range, level, num);
+                    root.getChildren().addAll(iv);
+                    towerControl.dragObject(iv, root);
+                }
+            });
+        }
 
-
-        tower1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                root.getChildren().clear();
-                Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince1 :");
-                Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame1 :");
-                Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range1 :");
-                root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range, score, lives);
-            }
-        });
-
-
-        tower2.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                root.getChildren().clear();
-                Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince2 :");
-                Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame2 :");
-                Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range2 :");
-                root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range, score, lives);
-
-            }
-        });
-
-        tower3.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                root.getChildren().clear();
-                Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince3 :");
-                Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame3 :");
-                Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range3 :");
-                root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range, score, lives);
-            }
-        });
-
-        tower4.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                root.getChildren().clear();
-                Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince4 :");
-                Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame4 :");
-                Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range4 :");
-                root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range, score, lives);
-            }
-        });
-
-        tower5.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                root.getChildren().clear();
-                Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince5 :");
-                Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame5 :");
-                Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range5 :");
-                root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range, score, lives);
-            }
-        });
-
-        tower6.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent mouseEvent) {
-                root.getChildren().clear();
-                Text prince = new Text();
-                setText(prince, 12.05 * 64, 4.5 * 64, "Prince6 :");
-                Text dame = new Text();
-                setText(dame, 12.05 * 64, 5.5 * 64, "Dame6 :");
-                Text range = new Text();
-                setText(range, 12.05 * 64, 6.5 * 64, "Range6 :");
-                root.getChildren().addAll(canvas, next_level_button, update_button, sell_button, tower1, tower2, tower3, tower4, tower5, tower6, rect_button);
-                root.getChildren().addAll(prince, dame, range, score, lives);
-            }
-        });
+        root.getChildren().addAll(next_level_button, update_button, sell_button);
+        for(int j = 0; j < 6; j++) root.getChildren().addAll(behind[j]);
+        for(int j = 0; j < 6; j++) root.getChildren().addAll(tower[j]);
 
         next_level_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
@@ -238,10 +152,6 @@ public class Level1 extends GameStage {
             }
         });
 
-        root.getChildren().addAll(next_level_button, update_button, sell_button, score, lives);
-        root.getChildren().addAll(tower1, tower2, tower3, tower4, tower5, tower6);
-
-        Scene scene = new Scene(root);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
@@ -251,17 +161,43 @@ public class Level1 extends GameStage {
         super.setButton(button, posX, posY, text);
         button.setMinHeight(30);
         button.setMaxHeight(30);
-        button.setMinWidth(90);
-        button.setMaxWidth(90);
+        button.setMinWidth(100);
+        button.setMaxWidth(100);
         button.setStyle("-fx-font: 14 broadway; -fx-base: #ee2211; -fx-base: rgb(0, 128, 128);");
         button.setTextFill(Color.rgb(0, 255, 255));
     }
 
-    public void setText(Text text, double posX, double posY, String string){
-        text.setFont(Font.font(20));
-        text.setText(string);
-        text.setLayoutX(posX);
-        text.setLayoutY(posY);
+    public void setImageButton(ImageView iv, double posX, double posY, String file){
+        iv.setImage(new Image(file));
+        iv.setX(posX);
+        iv.setY(posY);
+        //root.getChildren().addAll(iv);
     }
 
+    public void setText(Text text, double posX, double posY){
+        text.setLayoutX(posX);
+        text.setLayoutY(posY);
+        text.setFont(Font.font("arial", 20));
+        text.setFill(Color.rgb(0, 128, 255));
+    }
+
+    public void buttonClick(ImageView iv, Group root, Text text1, Text text2, Text text3, String num){
+        iv.setOnMouseMoved(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                root.getChildren().removeAll(text1, text2, text3);
+                text1.setText("Damage " + num + ": ");
+                text2.setText("Range " + num + ": ");
+                text3.setText("Level " + num + ": ");
+                root.getChildren().addAll(text1, text2, text3);
+                iv.setCursor(Cursor.HAND);
+            }
+        });
+        iv.setOnMouseExited(new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                root.getChildren().removeAll(text1, text2, text3);
+            }
+        });
+    }
 }
