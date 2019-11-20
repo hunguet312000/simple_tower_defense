@@ -1,6 +1,5 @@
 package Game;
 
-
 import Game.Stage.GameStage;
 import javafx.animation.AnimationTimer;
 import javafx.application.Application;

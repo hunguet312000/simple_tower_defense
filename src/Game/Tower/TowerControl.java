@@ -1,4 +1,4 @@
-package Game.Stage;
+package Game.Tower;
 
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;

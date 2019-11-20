@@ -1,6 +1,7 @@
 package Game.Stage;
 
 import Game.CreatLevel.CreatLV1;
+import Game.Tower.TowerControl;
 import javafx.animation.AnimationTimer;
 import javafx.event.EventHandler;
 import javafx.scene.Cursor;
@@ -76,7 +77,7 @@ public class Level1 extends GameStage {
         scene.setFill(Color.rgb(192, 192, 192));
         GraphicsContext gc = canvas.getGraphicsContext2D();
         draw(gc);
-
+        root.getChildren().removeAll();
         Button next_level_button = new Button();
         setButton(next_level_button, 12.8*64, 3.5*64 + 25, "Next Level");
 
@@ -133,24 +134,16 @@ public class Level1 extends GameStage {
         for(int j = 0; j < 6; j++) root.getChildren().addAll(behind[j]);
         for(int j = 0; j < 6; j++) root.getChildren().addAll(tower[j]);
 
-        next_level_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
+
+           AnimationTimer timer = new AnimationTimer() {
             @Override
-            public void handle(MouseEvent mouseEvent) {
-                try{
-                    AnimationTimer timer = new AnimationTimer() {
-                        @Override
-                        public void handle(long l) {
-                            playLevel1.update();
-                            draw(gc);
-                        }
-                    };
-                    timer.start();
-                    playLevel1.spawnTroop();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
+            public void handle(long l) {
+                playLevel1.update();
+                draw(gc);
+             }
+           };
+           timer.start();
+           playLevel1.CreatEnemy();
 
         primaryStage.setScene(scene);
         primaryStage.show();

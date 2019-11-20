@@ -1,4 +1,4 @@
-package Game.EnemyLV2;
+package Game.Enemy.EnemyLV2;
 
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -13,7 +13,6 @@ public class PlaneLV2 extends BaseEnemyLV2 {
         this.pos_x = pos_x;
         this.pos_y = pos_y;
         speed = 3;
-        health = 100;
         direction = Direction.UP;
         image = new Image("file:Source/Enemy/Weapons/towerDefense_tile270.png");
         shadow = new Image("file:Source/Enemy/Weapons/towerDefense_tile293.png");

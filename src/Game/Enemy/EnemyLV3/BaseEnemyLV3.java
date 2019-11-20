@@ -1,9 +1,7 @@
-package Game.EnemyLV3;
+package Game.Enemy.EnemyLV3;
 
 import Game.Object.EnemyObject;
-import Game.Object.GameObject;
 import Game.Object.UpdatableObject;
-import javafx.scene.image.Image;
 
 import java.awt.*;
 

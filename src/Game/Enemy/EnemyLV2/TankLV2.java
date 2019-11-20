@@ -1,4 +1,4 @@
-package Game.EnemyLV1;
+package Game.Enemy.EnemyLV2;
 
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -6,15 +6,14 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class TankLV1 extends BaseEnemyLV1 {
+public class TankLV2 extends BaseEnemyLV2 {
     protected Image gunTank;
 
 
-    public TankLV1 (){
-        pos_x = 7*64 + 32;
+    public TankLV2 (){
+        pos_x = 4*64 + 32;
         pos_y = -64;
         speed = 2;
-        health = 100;
         direction = Direction.UP;
         image = new Image("file:Source/Enemy/Weapons/towerDefense_tile268.png");
         gunTank = new Image("file:Source/Enemy/Weapons/towerDefense_tile291.png");

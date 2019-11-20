@@ -1,20 +1,21 @@
-package Game.EnemyLV1;
+package Game.Enemy.EnemyLV3;
+
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
-public class PlaneLV1 extends BaseEnemyLV1 {
+
+public class PlaneLV3 extends BaseEnemyLV3 {
     private Image shadow;
 
-    public PlaneLV1 ( int pos_x , int pos_y){
+    public PlaneLV3 ( int pos_x , int pos_y){
         this.pos_x = pos_x;
         this.pos_y = pos_y;
         speed = 3;
-        health = 100;
         direction = Direction.UP;
-        image = new Image("file:Source/Enemy/Weapons/towerDefense_tile270.png");
-        shadow = new Image("file:Source/Enemy/Weapons/towerDefense_tile293.png");
+        image = new Image("file:Source/Enemy/Weapons/towerDefense_tile271.png");
+        shadow = new Image("file:Source/Enemy/Weapons/towerDefense_tile294.png");
     }
 
     public void draw (GraphicsContext gc){

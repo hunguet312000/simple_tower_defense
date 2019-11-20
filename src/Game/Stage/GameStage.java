@@ -16,7 +16,6 @@ public class GameStage extends Application  {
     public static void main(String[] args) {
         launch(args);
     }
-
         public void setButton(Button button, double posX, double posY, String text){
         button.setLayoutX(posX);
         button.setLayoutY(posY);
@@ -89,8 +88,8 @@ public class GameStage extends Application  {
             public void handle(MouseEvent event) {
                 Level1 level_1 = new Level1();
                 try {
-                    level_1.start(new Stage());
-                    primaryStage.close();
+                        level_1.start(new Stage());
+                        primaryStage.close();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

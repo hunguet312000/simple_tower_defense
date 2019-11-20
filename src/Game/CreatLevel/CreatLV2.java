@@ -1,8 +1,8 @@
 package Game.CreatLevel;
 
-import Game.EnemyLV2.PlaneLV2;
-import Game.EnemyLV2.SolidersLV2;
-import Game.EnemyLV2.TankLV2;
+import Game.Enemy.EnemyLV2.PlaneLV2;
+import Game.Enemy.EnemyLV2.SolidersLV2;
+import Game.Enemy.EnemyLV2.TankLV2;
 import javafx.animation.KeyFrame;
 import javafx.animation.Timeline;
 import javafx.scene.canvas.GraphicsContext;

@@ -1,4 +1,4 @@
-package Game.EnemyLV1;
+package Game.Enemy.EnemyLV3;
 
 import javafx.scene.SnapshotParameters;
 import javafx.scene.canvas.GraphicsContext;
@@ -6,15 +6,16 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.paint.Color;
 
-public class SolidersLV1 extends  BaseEnemyLV1 {
-    public SolidersLV1 (int k , int pos_x , int pos_y ){
-        this.pos_x = pos_x;
-        this.pos_y = pos_y;
-        int x = k;
-        speed = 1.25;
-        health = 100;
+public class TankLV3 extends  BaseEnemyLV3 {
+    protected Image gunTank;
+
+    public TankLV3 (){
+        pos_x = 10*64 + 32;
+        pos_y = -64;
+        speed = 2;
         direction = Direction.UP;
-        for ( x = 245 ; x <= 248 ; x++) image = new Image("file:Source/Enemy/Soliders/towerDefense_tile" + k +".png");
+        image = new Image("file:Source/Enemy/Weapons/towerDefense_tile269.png");
+        gunTank = new Image("file:Source/Enemy/Weapons/towerDefense_tile292.png");
     }
 
     public void draw (GraphicsContext gc){
@@ -23,6 +24,10 @@ public class SolidersLV1 extends  BaseEnemyLV1 {
         ImageView iv = new ImageView(image);
         iv.setRotate(this.direction.getDegree());
         Image base = iv.snapshot(params, null);
+        ImageView iv2 = new ImageView(gunTank);
+        iv2.setRotate(this.direction.getDegree());
+        Image gun = iv2.snapshot(params, null);
         gc.drawImage(base, pos_x, pos_y);
+        gc.drawImage(gun, pos_x, pos_y);
     }
 }

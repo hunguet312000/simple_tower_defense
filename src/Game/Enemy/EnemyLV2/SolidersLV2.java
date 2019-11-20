@@ -1,4 +1,4 @@
-package Game.EnemyLV2;
+package Game.Enemy.EnemyLV2;
 
 import Game.Object.GameObject;
 import javafx.scene.SnapshotParameters;
@@ -13,7 +13,6 @@ public class SolidersLV2 extends BaseEnemyLV2 {
         this.pos_y = pos_y;
         int x = k;
         speed = 1.25;
-        health = 100;
         direction = Direction.UP;
         for ( x = 245 ; x <= 248 ; x++) image = new Image("file:Source/Enemy/Soliders/towerDefense_tile" + k +".png");
     }
