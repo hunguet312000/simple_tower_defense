@@ -17,11 +17,12 @@ import javafx.scene.control.Button;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 import javafx.scene.paint.Color;
+import javafx.stage.WindowEvent;
 
 public class Level1 extends GameStage {
 
     CreatLV1 playLevel1 = new CreatLV1();
-
+    public static Group root = new Group();
 
     public static final String[][] MAP_TILES1 = new String[][]{
             { "024" , "024" , "024" , "024" , "024" , "024" , "024" , "025" , "023" , "024" , "024" , "024"},
@@ -70,7 +71,6 @@ public class Level1 extends GameStage {
         TowerControl towerControl = new TowerControl();
 
         primaryStage.setTitle("Game");
-        Group root = new Group();
         Canvas canvas = new Canvas(64*15 + 15, 64*11);
         root.getChildren().addAll(canvas);
         Scene scene = new Scene(root);
@@ -78,8 +78,8 @@ public class Level1 extends GameStage {
         GraphicsContext gc = canvas.getGraphicsContext2D();
         draw(gc);
         root.getChildren().removeAll();
-        Button next_level_button = new Button();
-        setButton(next_level_button, 12.8*64, 3.5*64 + 25, "Next Level");
+
+        Button Lives_button = new Button();
 
         Button update_button = new Button();
         setButton(update_button, 12.05*64, 9*64, "Update");
@@ -130,7 +130,7 @@ public class Level1 extends GameStage {
             });
         }
 
-        root.getChildren().addAll(next_level_button, update_button, sell_button);
+        root.getChildren().addAll(Lives_button , update_button, sell_button);
         for(int j = 0; j < 6; j++) root.getChildren().addAll(behind[j]);
         for(int j = 0; j < 6; j++) root.getChildren().addAll(tower[j]);
 
@@ -139,6 +139,9 @@ public class Level1 extends GameStage {
             @Override
             public void handle(long l) {
                 playLevel1.update();
+                setButton(Lives_button, 12.8*64, 3.5*64 + 25, "Lives : " + playLevel1.player.getLives());
+
+                playLevel1.lose(primaryStage);
                 draw(gc);
              }
            };
