@@ -60,8 +60,13 @@ public class GameStage extends Application  {
         start_button.setOnMouseClicked(new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                root.getChildren().clear();
-                root.getChildren().addAll(canvas, level1, level2, level3, back_button);
+                Level level = new Level();
+                try {
+                    level.start(new Stage());
+                    primaryStage.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -82,58 +87,10 @@ public class GameStage extends Application  {
             }
         });
 
-        // change level 1 stage
-        level1.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Level1 level_1 = new Level1();
-                try {
-                        level_1.start(new Stage());
-                        primaryStage.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        // change level 2 stage
-
-        level2.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Level2 level_2= new Level2();
-                try {
-                    level_2.start(new Stage());
-                    primaryStage.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        level3.setOnMouseClicked(new EventHandler<MouseEvent>() {
-            @Override
-            public void handle(MouseEvent event) {
-                Level3 level_3= new Level3();
-                try {
-                    level_3.start(new Stage());
-                    primaryStage.close();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
         Scene scene = new Scene(root);
         primaryStage.setScene(scene);
 
         primaryStage.show();
     }
 
-    abstract class buttonFunction{
-        Button button;
-        double posX;
-        double posY;
-        String text;
-    }
 }

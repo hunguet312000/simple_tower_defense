@@ -7,8 +7,7 @@ public class HealthBar extends GameObject implements UpdatableObject {
     private int health, temphealth;
 
     public HealthBar(int pos_x, int pos_y) {
-        this.pos_x = pos_x;
-        this.pos_y = pos_y;
+        super(pos_x, pos_y);
         health = 30;
         temphealth = 30;
     }

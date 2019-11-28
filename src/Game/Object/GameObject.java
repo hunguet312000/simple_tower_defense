@@ -8,6 +8,13 @@ public class GameObject {
 
     protected int pos_x, pos_y;
     protected Image image;
+    protected int height, width;
+    protected Direction direction;
+
+    public GameObject ( int pos_x , int pos_y ){
+         this.pos_x = pos_x;
+         this.pos_y = pos_y;
+    }
 
     public int getPos_x() {
         return pos_x;
@@ -21,6 +28,13 @@ public class GameObject {
         return image;
     }
 
+    public int getWidth() {
+        return width;
+    }
+
+    public int getHeight() {
+        return height;
+    }
 
     public void setPos_x(int pos_x) {
         this.pos_x = pos_x;
@@ -34,8 +48,16 @@ public class GameObject {
         this.image = image;
     }
 
+    public void setWidth(int width ) {
+        width= (int) image.getWidth();
+    }
+
+    public void setHeight(int height) {
+        height = (int) image.getHeight();
+    }
+
     public enum Direction {
-        LEFT(180), UP(270), RIGHT(0), DOWN(90);
+        LEFT(180), UP(270), RIGHT(0), DOWN(90) , RD ( 45);
 
         int degree;
 
@@ -47,7 +69,6 @@ public class GameObject {
             return degree;
         }
     }
-
 
 }
 
