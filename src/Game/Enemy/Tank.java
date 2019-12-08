@@ -1,16 +1,37 @@
 package Game.Enemy;
 
-import javafx.scene.image.Image;
+import javafx.animation.AnimationTimer;
+import javafx.scene.control.ProgressBar;
 
 public class Tank extends BaseEnemy {
-    private int random = (int) (Math.random()*2);
 
-    public Tank (){
-        super(4*64 + 32 , -64 , -100 , 1 , Direction.UP);
-        if ( random % 2 == 0 ) {
-            image = new Image("file:Source/Enemy/Weapons/towerDefense_tile268.png");
-        }else image = new Image("file:Source/Enemy/Weapons/towerDefense_tile269.png");
+    public Tank ( int k ){
+            super( k , "tank" , 65 , 300 , 10 , 10);
     }
 
-    public void increaseHealthTank ( int level ) { setHp( -100 + level*100);}
+    @Override
+    public void increaseHealth(int level) {
+        hp += level*1.5;
+    }
+
+    public void increaseSpeed ( int level ) { speed -= level*0.1;}
+
+    public void HealthBar(){
+        healthbar = new ProgressBar(this.hp);
+        healthbar.setPrefSize(50 , 12);
+        healthbar.setViewOrder(-1);
+        this.getChildren().add(healthbar);
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                if ( healthbar != null ){
+                    healthbar.setTranslateX(imageView.getTranslateX() + 7);
+                    healthbar.setStyle("-fx-accent: red;");
+                    healthbar.setTranslateY(imageView.getTranslateY() - 10);
+                }
+            }
+        };
+        timer.start();
+    }
 }

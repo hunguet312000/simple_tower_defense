@@ -1,22 +1,61 @@
 package Game.Enemy;
 
-import javafx.scene.image.Image;
+import javafx.animation.*;
+import javafx.scene.control.ProgressBar;
+import javafx.scene.shape.*;
+import javafx.util.Duration;
 
 public class Plane extends BaseEnemy{
-    private int random = (int) (Math.random()*2);
 
-    public Plane (){
-        super(0 , 0 ,-60 , -2 , Direction.RD);
-        if ( random % 2 == 0 ) image = new Image("file:Source/Enemy/Weapons/towerDefense_tile271.png");
-        else if ( random % 2 != 0 ) image = new Image("file:Source/Enemy/Weapons/towerDefense_tile270.png");
+    public Plane ( int k){
+        super(k , "plane" , 28 , 6*15 , 5 ,5 );
     }
-    public void increaseHealthPL (int level) { setHp( -60 + level*30 );}
 
-    public void update(){
-        pos_x += speed + 5;
-        pos_y += speed + 5;
-        healthBar.setPos_y(pos_y + 15);
-        healthBar.setPos_x(pos_x + 15);
-        setHealthBar(getHealthBar());
+    public void move(){
+        Path path;
+        path = new Path();
+        path.getElements().add( new MoveTo(0, 300f));
+        path.getElements().add( new QuadCurveTo( 300f , -300f , 600f , 11*64));
+
+        PathTransition pathTransition = new PathTransition();
+        pathTransition.setDuration(Duration.seconds(speed));
+        pathTransition.setNode(imageView);
+        pathTransition.setPath(path);
+        pathTransition.setOrientation(PathTransition.OrientationType.ORTHOGONAL_TO_TANGENT);
+        pathTransition.setCycleCount(0);
+        pathTransition.setAutoReverse(false);
+
+        pathTransition.setOnFinished(actionEvent -> {
+            Destroy();
+            if ( this.hp > 0)
+                player.lives--;
+        });
+        pathTransition.play();
+    }
+
+    @Override
+    public void increaseHealth(int level) {
+        hp += level*1;
+    }
+
+    public void increaseSpeed ( int level ) { speed -= level*0.05;}
+
+    public void HealthBar(){
+        healthbar = new ProgressBar(this.hp);
+        healthbar.setPrefSize(40 , 12);
+        healthbar.setViewOrder(-1);
+        this.getChildren().add(healthbar);
+
+        AnimationTimer timer = new AnimationTimer() {
+            @Override
+            public void handle(long l) {
+                if ( healthbar != null ){
+                    healthbar.setTranslateX(imageView.getTranslateX() + 50);
+                    healthbar.setStyle("-fx-accent: yellow;");
+                    healthbar.setTranslateY(imageView.getTranslateY() + 10);
+                }
+            }
+        };
+        timer.start();
     }
 }
