@@ -43,7 +43,7 @@ public abstract class BaseEnemy  extends EnemyObject implements EnemyInterface {
         path.getElements().add( new HLineTo(5*64 + 64));
         path.getElements().add( new VLineTo(7*64 + 64));
         path.getElements().add( new HLineTo(10*64 + 64));
-        path.getElements().add( new VLineTo(11*64 + 64));
+        path.getElements().add( new VLineTo(10*64 + 64));
 
         PathTransition pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.seconds(speed));
