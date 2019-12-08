@@ -3,7 +3,6 @@ package Game.Button;
 import Game.Object.Player;
 import Game.Stage.Level;
 import Game.Tower.BaseTower;
-import javafx.animation.PathTransition;
 import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.effect.Glow;
