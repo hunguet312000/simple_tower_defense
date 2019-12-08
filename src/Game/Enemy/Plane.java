@@ -14,7 +14,7 @@ public class Plane extends BaseEnemy{
     public void move(){
         Path path;
         path = new Path();
-        path.getElements().add( new MoveTo(0, 300f));
+        path.getElements().add( new MoveTo(-25, 300f));
         path.getElements().add( new QuadCurveTo( 300f , -300f , 600f , 11*64));
 
         PathTransition pathTransition = new PathTransition();

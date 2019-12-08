@@ -34,7 +34,7 @@ public abstract class BaseEnemy  extends EnemyObject implements EnemyInterface {
     public void move(){
         Path path;
         path = new Path();
-        path.getElements().add( new MoveTo(4*64 + 64 , 0));
+        path.getElements().add( new MoveTo(4*64 + 64 , -20));
         path.getElements().add( new VLineTo(1*64 + 64));
         path.getElements().add( new HLineTo(9*64 + 64));
         path.getElements().add( new VLineTo(4*64 + 64));
@@ -43,7 +43,7 @@ public abstract class BaseEnemy  extends EnemyObject implements EnemyInterface {
         path.getElements().add( new HLineTo(5*64 + 64));
         path.getElements().add( new VLineTo(7*64 + 64));
         path.getElements().add( new HLineTo(10*64 + 64));
-        path.getElements().add( new VLineTo(10*64 + 64));
+        path.getElements().add( new VLineTo(11*64 + 64));
 
         PathTransition pathTransition = new PathTransition();
         pathTransition.setDuration(Duration.seconds(speed));
