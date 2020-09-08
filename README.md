@@ -1,14 +1,4 @@
-# simple_tower_defense
-
-![](Source/Menu/GameStart.png)
-
-Bài tập lớn môn OOP của nhóm 23 N1 CA-CLC3
-
-Tác giả:
-
-Đinh Xuân Hùng
-
-Nguyễn Văn Linh
-
-Hoàng Tuấn Kiệt
+# simple-tower-defense
+This repository is belong to N-Linh (Nguyen Van Linh).
+Under the collaboration of: 
 
