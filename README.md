@@ -1,4 +1,13 @@
-# simple-tower-defense
-This repository is belong to hunguet312000 (Dinh Xuan Hung).
-Under the collaboration of: 
-N-Linh (Nguyen Van Linh)
+# simple_tower_defense
+
+![](Source/Menu/GameStart.png)
+
+Bài tập lớn môn OOP của nhóm 23 N1 CA-CLC3
+
+Tác giả:
+
+Đinh Xuân Hùng
+
+Nguyễn Văn Linh
+
+Hoàng Tuấn Kiệt
